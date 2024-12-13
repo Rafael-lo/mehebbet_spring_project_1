@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +20,7 @@ import com.mehebbet_spring_project_1.mehebbet_spring_project_1.models.Product;
 import com.mehebbet_spring_project_1.mehebbet_spring_project_1.repositories.ProductRepository;
 import com.mehebbet_spring_project_1.mehebbet_spring_project_1.services.ProductService;
 
+@Service
 public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
