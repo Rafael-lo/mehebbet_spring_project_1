@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+	<section>
+		<div class="container-fluid mt-5 p-5 bg-light">
+			<div class="row">
+				<div class="col-md-10 offset-md-1 ">
+
+					<p class="fs-3 text-center">Мой профиль</p>
+					<th:block th:if="${session.succMsg}">
+						<p class="text-success fw-bold  text-center">[[${session.succMsg}]]</p>
+						<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+					</th:block>
+
+					<th:block th:if="${session.errorMsg}">
+						<p class="text-danger fw-bold  text-center">[[${session.errorMsg}]]</p>
+						<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+					</th:block>
+					<hr>
+					<div class="text-center">
+						<img alt="" th:src="@{'../img/profile_img/'+${user.profileImage}}"
+							class="border p-2"
+							style="width: 110px; height: 110px; border-radius: 50%;">
+					</div>
+					<div class="col-md-8 offset-md-2 mt-4 bg-white">
+						<table class="table table-borderless">
+
+							<tbody class="p-4 rounded">
+								<form action="/admin/update-profile" method="post"
+									enctype="multipart/form-data">
+								<tr>
+									<th scope="row">Name</th>
+									<td></td>
+									<td><input type="text" name="name" class="form-control"
+										th:value="${user.name}"></td>
+								</tr>
+								<tr>
+									<th scope="row">Телефон</th>
+									<td></td>
+									<td><input type="text" name="mobileNumber"
+										class="form-control" th:value="${user.mobileNumber}"></td>
+								</tr>
+								<tr>
+									<th scope="row">Почта</th>
+									<td></td>
+									<td><input type="text" name="" class="form-control"
+										readonly th:value="${user.email}"></td>
+								</tr>
+								<tr>
+									<th scope="row">Адрес</th>
+									<td></td>
+									<td><input type="text" name="address" class="form-control"
+										th:value="${user.address}"></td>
+								</tr>
+								<tr>
+									<th scope="row">Город</th>
+									<td></td>
+									<td><input type="text" name="city" class="form-control"
+										th:value="${user.city}"></td>
+								</tr>
+								<tr>
+									<th scope="row">Регион</th>
+									<td></td>
+									<td><input type="text" name="state" class="form-control"
+										th:value="${user.state}"></td>
+								</tr>
+								<tr>
+									<th scope="row">Финкод</th>
+									<td></td>
+									<td><input type="text" name="pincode" class="form-control"
+										th:value="${user.pincode}"></td>
+								</tr>
+								<tr>
+									<th scope="row">Фото</th>
+									<td></td>
+									<td><input type="file" name="img" class="form-control"
+										value=""></td>
+								</tr>
+								<tr>
+									<th scope="row">Роль</th>
+									<td></td>
+									<td><input type="text" name="" class="form-control"
+										readonly th:value="${user.role}"></td>
+								</tr>
+								<tr>
+									<th scope="row">Статус аккаунта</th>
+									<td></td>
+									<td><input type="text" name="" class="form-control"
+										readonly th:value="${user.isEnable}"> <input
+										type="hidden" th:value="${user.id}" name="id"></td>
+								</tr>
+
+								<tr>
+									<td>
+										<button class="btn btn-sm bg-primary text-light">Изменить</button>
+									</td>
+								</tr>
+								</form>
+							</tbody>
+						</table>
+
+					</div>
+
+				</div>
+				<hr>
+				<div class="col-md-10 offset-md-1 mt-1">
+					<div class="row">
+						<p class="text-center fs-3">Изменить пароль</p>
+						<div class="col-md-6 offset-md-3">
+							<table class="table table-borderless bg-white">
+
+								<tbody>
+									<form action="/admin/change-password" method="post">
+										<tr>
+											<th scope="row">Актуальный пароль</th>
+
+											<td><input type="password" name="currentPassword" class="form-control"></td>
+										</tr>
+
+										<tr>
+											<th scope="row">Новый пароль</th>
+
+											<td><input type="password" name="newPassword" class="form-control"></td>
+										</tr>
+
+										<tr>
+											<th scope="row">Подтвердите пароль</th>
+
+											<td><input type="password" name="confirmPassword" class="form-control"></td>
+										</tr>
+										<tr>
+											<td >
+												<button class="btn btn-sm bg-primary text-light col-md-4">Изменить</button>
+											</td>
+
+										</tr>
+									</form>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+
+
+
+	</section>
+</body>
+</html>

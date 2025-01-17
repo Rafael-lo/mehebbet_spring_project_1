@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+	<section>
+
+		<div class="container mt-5 p-5">
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-6 mt-3 p-5">
+					<div class="card p-3 mb-5 bg-body-tertiary rounded">
+						<div class="card-header">
+							<p class="fs-4">Вход в кабинет</p>
+							<div th:if="${param.error}"
+								class="alert alert-danger text-center">
+
+								<th:block
+									th:if="${session.SPRING_SECURITY_LAST_EXCEPTION!=null}">
+									[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]
+								</th:block>
+
+
+
+							</div>
+
+							<div th:if="${param.logout}" class="alert alert-success">
+								Успех!</div>
+						</div>
+						<div class="card-body">
+							<form action="/login" method="post">
+								<div class="mb-3">
+									<label class="form-label">Почта</label> <input
+										class="form-control" name="username" type="email">
+								</div>
+
+								<div class="mb-3">
+									<label class="form-label">Пароль</label> <input
+										class="form-control" name="password" type="password">
+								</div>
+								<button type="submit"
+									class="btn bg-success py-2 text-white col-md-12">Вход</button>
+							</form>
+						</div>
+
+						<div class="card-footer text-center">
+							<a href="/forgot-password" class="text-decoration-none text-danger">Забыли пароль?</a><br>
+							Нет аккаунта? <a href="#" class="text-decoration-none text-danger">Создать</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>
