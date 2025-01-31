@@ -20,11 +20,6 @@
 					<p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
 					<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
 				</th:block>
-
-				<th:block th:if="${session.errorMsg}">
-					<p class="text-danger fw-bold text-center">[[${session.errorMsg}]]</p>
-					<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
-				</th:block>
 				<div class="col-md-4 p-3">
 
 					<form action="/admin/products" method="get">
@@ -70,11 +65,14 @@
 								<td>[[${p.discountPrice}]]</td>
 								<td>[[${p.isActive}]]</td>
 								<td>[[${p.stock}]]</td>
-								<td><a th:href="@{'/admin/editProduct/'+${p.id}}"
-									class="btn btn-sm btn-primary">Редактировать</a> <a
-									th:href="@{'/admin/deleteProduct/'+${p.id}}"
-									class="btn btn-sm btn-danger">
-										Удалить</a></td>
+								<td>
+									<a th:href="@{'/admin/editProduct/'+${p.id}}"
+									class="btn btn-sm btn-primary">Редактировать</a>
+
+									<a th:href="@{'/admin/deleteProduct/'+${p.id}}"
+									class="btn btn-sm btn-danger">Удалить</a>
+
+								</td>
 							</tr>
 
 						</tbody>

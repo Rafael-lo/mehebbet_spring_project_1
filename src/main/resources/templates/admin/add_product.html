@@ -41,7 +41,9 @@
 								</div>
 
 								<div class="mb-3">
-									<label>Категория</label> <select class="form-control"
+									<label>Категория</label>
+
+									<select class="form-control"
 										name="category">
 										<option>--Выберите--</option>
 										<option th:each="c:${categories}">[[${c.name}]]</option>

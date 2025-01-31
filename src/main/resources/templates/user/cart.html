@@ -34,20 +34,30 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="cart,c:${carts}" class=" border">
-								<th scope="row">[[${c.count}]]</th>
+							<tr th:each="cart : ${carts}" class=" border">
+								<th scope="row">[[${cart.count}]]</th>
 								<td><img
 									th:src="@{'/img/product_img/'+${cart.product.image}}"
 									width="70px" height="70px"></td>
 								<td>[[${cart.product.title}]]</td>
 								<td>[[${cart.product.discountPrice}]]</td>
-								<td class="text-center "><a class="p-2 me-1 rounded bg-danger border text-white"
+								<td class="text-center ">
+
+									<a class="p-2 me-1 rounded bg-danger border text-white"
 									th:href="@{'/user/cartQuantityUpdate?sy=de&cid='+${cart.id}}">
 										<i class="fa-solid fa-minus"></i>
-								</a> [ [[${cart.quantity}]] ] <a class="p-2 ms-1 rounded bg-success border text-white"
+									</a>
+
+									[ [[${cart.quantity}]] ]
+
+									// - 8 +
+
+									<a class="p-2 ms-1 rounded bg-success border text-white"
 									th:href="@{'/user/cartQuantityUpdate?sy=in&cid='+${cart.id}}">
 										<i class="fa-solid fa-plus"></i>
-								</a></td>
+									</a>
+
+								</td>
 								<td>[[${cart.totalPrice}]]</td>
 							</tr>
 							
@@ -57,6 +67,7 @@
 					</table>
 					<div class="text-end d-flex align-items-center justify-content-between">
 						<p>Общая стоимость: [[${totalOrderPrice}]]</p>
+						<p>Всего: [[${countCart}]]</p>
 						<a href="/user/orders" class="btn btn-success"> Оплатить</a>
 					</div>
 				</div>

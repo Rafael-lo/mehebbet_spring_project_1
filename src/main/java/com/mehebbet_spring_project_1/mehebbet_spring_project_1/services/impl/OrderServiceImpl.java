@@ -2,6 +2,9 @@ package com.mehebbet_spring_project_1.mehebbet_spring_project_1.services.impl;
 
 import java.util.List;
 
+import com.mehebbet_spring_project_1.mehebbet_spring_project_1.models.Cart;
+import com.mehebbet_spring_project_1.mehebbet_spring_project_1.repositories.CartRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 
 import com.mehebbet_spring_project_1.mehebbet_spring_project_1.models.OrderRequest;
@@ -9,11 +12,15 @@ import com.mehebbet_spring_project_1.mehebbet_spring_project_1.models.ProductOrd
 import com.mehebbet_spring_project_1.mehebbet_spring_project_1.services.OrderService;
 
 public class OrderServiceImpl implements OrderService {
+	@Autowired
+	private CartRepository cartRepository;
+
 
 	@Override
 	public void saveOrder(Integer userid, OrderRequest orderRequest) throws Exception {
-		// TODO Auto-generated method stub
-		
+		List<Cart> carts = cartRepository.findByUserId(userid);
+
+
 	}
 
 	@Override

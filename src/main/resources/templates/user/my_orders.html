@@ -41,12 +41,18 @@
 									o.price}]]
 								</td>
 								<td>[[${o.status}]]</td>
-								<td><th:block th:if="${o.status!='Cancelled'}">
+								<td>
+
+									<th:block th:if="${o.status!='Cancelled'}">
 										<a th:href="@{'/user/update-status?id='+${o.id}+'&st=6' }"
 											class="btn btn-sm btn-danger">Отменить</a>
-									</th:block> <th:block th:unless="${o.status!='Cancelled'}">
+									</th:block>
+
+									<th:block th:unless="${o.status!='Cancelled'}">
 										<a href="#" class="btn btn-sm btn-danger disabled" >Отменить</a>
-									</th:block></td>
+									</th:block>
+
+								</td>
 							</tr>
 						</tbody>
 					</table>
