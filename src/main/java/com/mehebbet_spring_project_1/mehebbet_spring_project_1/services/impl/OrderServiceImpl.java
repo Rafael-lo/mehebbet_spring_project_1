@@ -10,7 +10,9 @@ import org.springframework.data.domain.Page;
 import com.mehebbet_spring_project_1.mehebbet_spring_project_1.models.OrderRequest;
 import com.mehebbet_spring_project_1.mehebbet_spring_project_1.models.ProductOrder;
 import com.mehebbet_spring_project_1.mehebbet_spring_project_1.services.OrderService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private CartRepository cartRepository;
