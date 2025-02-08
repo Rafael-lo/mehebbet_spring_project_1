@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+	<section>
+		<div class="container-fluid mt-5 p-5">
+
+			<div class="card">
+				<div class="card-header">
+					<p class="fs-4">Корзина</p>
+					<th:block th:if="${session.succMsg}">
+						<p class="text-success fw-bold">[[${session.succMsg}]]</p>
+						<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+					</th:block>
+
+					<th:block th:if="${session.errorMsg}">
+						<p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
+						<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+					</th:block>
+				</div>
+				<div class="card-body">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Номер</th>
+								<th scope="col">Картинка</th>
+								<th scope="col">Имя товара</th>
+								<th scope="col">Цена</th>
+								<th scope="col" class="text-center">Количество</th>
+								<th scope="col">Полная стоимость</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="cart : ${carts}" class=" border">
+								<th scope="row">[[${cart.count}]]</th>
+								<td><img
+									th:src="@{'/img/product_img/'+${cart.product.image}}"
+									width="70px" height="70px"></td>
+								<td>[[${cart.product.title}]]</td>
+								<td>[[${cart.product.discountPrice}]]</td>
+								<td class="text-center ">
+
+									<a class="p-2 me-1 rounded bg-danger border text-white"
+									th:href="@{'/user/cartQuantityUpdate?sy=de&cid='+${cart.id}}">
+										<i class="fa-solid fa-minus"></i>
+									</a>
+
+									[ [[${cart.quantity}]] ]
+
+									// - 8 +
+
+									<a class="p-2 ms-1 rounded bg-success border text-white"
+									th:href="@{'/user/cartQuantityUpdate?sy=in&cid='+${cart.id}}">
+										<i class="fa-solid fa-plus"></i>
+									</a>
+
+								</td>
+								<td>[[${cart.totalPrice}]]</td>
+							</tr>
+							
+
+						</tbody>
+
+					</table>
+					<div class="text-end d-flex align-items-center justify-content-between">
+						<p>Общая стоимость: [[${totalOrderPrice}]]</p>
+						<p>Всего: [[${countCart}]]</p>
+						<a href="/user/orders" class="btn btn-success"> Оплатить</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

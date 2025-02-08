@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+	<section>
+
+		<div class="container mt-5 p-5">
+			<form action="/user/save-order" method="post">
+				<div class="row">
+
+					<div class="col-md-6">
+
+
+						<div class="mb-3 row">
+							<p class="text-center fs-4">Адрес доставки</p>
+							<hr>
+							<div class="col">
+								<label>Имя</label> <input type="text" name="firstName" required
+									class="form-control mt-1">
+							</div>
+							<div class="col">
+								<label>Фамилия</label> <input type="text" name="lastName" required
+									class="form-control mt-1">
+							</div>
+						</div>
+
+						<div class="mb-3 row">
+							<div class="col">
+								<label>Почта</label> <input type="email" name="email" required
+									class="form-control col">
+							</div>
+							<div class="col">
+								<label>Телефон</label> <input type="text" name="mobileNo" required
+									class="form-control col">
+							</div>
+						</div>
+
+						<div class="mb-3 row">
+							<div class="col">
+								<label>Адрес</label> <input type="text" name="address" required
+									class="form-control col">
+							</div>
+							<div class="col">
+								<label>Город</label> <input type="text" name="city" required
+									class="form-control col">
+							</div>
+						</div>
+						<div class="mb-3 row">
+							<div class="col">
+								<label>Регион</label> <input type="text" name="state" required
+									class="form-control col">
+							</div>
+							<div class="col">
+								<label>Финкод</label> <input type="number" name="pincode" required
+									class="form-control col">
+							</div>
+						</div>
+						<!-- </form> -->
+
+					</div>
+					<div class="col-md-6">
+						<p class="text-center fs-4">Тип оплаты</p>
+						<hr>
+						<div class="card">
+							<div class="card-body">
+								<table class="table table-borderless">
+									<tbody>
+										<tr>
+											<td>Общая стоимость</td>
+											<td>:</td>
+											<td> [[${orderPrice}]]</td>
+										</tr>
+										<tr>
+											<td>Стоимость доставки</td>
+											<td>:</td>
+											<td> 150</td>
+										</tr>
+
+										<tr>
+											<td>Налог</td>
+											<td>:</td>
+											<td> 30</td>
+										</tr>
+
+										<tr class="border-top">
+											<td>Всего</td>
+											<td>:</td>
+											<td> [[${totalOrderPrice}]]</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<div class="card p-3 mb-5 mt-2 bg-body-tertiary rounded">
+
+							<div class="card-body">
+								<!-- <form action="/login" method="post"> -->
+								<div class="mb-3">
+									<label class="form-label">Выберите способ оплаты</label>
+									<select required
+										name="paymentType" class="form-control">
+										<option>--Выберите--</option>
+										<option value="COD">Оплата на месте</option>
+										<option value="ONLINE">Оплата по карте</option>
+									</select>
+
+								</div>
+
+								<button class="btn bg-success text-white col-md-12">Разместить заказ</button>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</section>
+</body>
+</html>

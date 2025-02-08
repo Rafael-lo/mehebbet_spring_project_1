@@ -15,7 +15,9 @@ import com.mehebbet_spring_project_1.mehebbet_spring_project_1.util.AppConstant;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AuthFailureHandlerImpl extends SimpleUrlAuthenticationFailureHandler {
 	@Autowired
 	private UserRepository userRepository;

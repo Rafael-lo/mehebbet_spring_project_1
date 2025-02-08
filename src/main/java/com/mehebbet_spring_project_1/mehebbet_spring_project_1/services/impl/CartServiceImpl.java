@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import com.mehebbet_spring_project_1.mehebbet_spring_project_1.models.Cart;
@@ -14,6 +15,7 @@ import com.mehebbet_spring_project_1.mehebbet_spring_project_1.repositories.Prod
 import com.mehebbet_spring_project_1.mehebbet_spring_project_1.repositories.UserRepository;
 import com.mehebbet_spring_project_1.mehebbet_spring_project_1.services.CartService;
 
+@Service
 public class CartServiceImpl implements CartService {
 	
 	@Autowired
